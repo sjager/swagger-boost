@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Swagger Boost — Options</title>
+  <style>
+    body { font: 14px system-ui; padding: 16px; min-width: 360px; }
+    h1 { font-size: 16px; margin: 0 0 12px; }
+    label { display: block; margin: 12px 0 4px; font-weight: 600; }
+    input, textarea { width: 100%; padding: 6px 8px; font: 13px monospace; box-sizing: border-box; }
+    textarea { height: 72px; resize: vertical; }
+    .hint { color: #666; font-size: 12px; margin-top: 2px; }
+    .row { display: flex; gap: 8px; align-items: center; margin-top: 14px; }
+    button { padding: 6px 14px; cursor: pointer; }
+    .status { font-size: 12px; color: #2e7d32; }
+  </style>
+</head>
+<body>
+  <h1>Swagger Boost</h1>
+
+  <label for="cookieName">Cookie name</label>
+  <input id="cookieName" type="text" />
+  <div class="hint">Name of the JWT cookie to read (e.g., <code>jwt</code>).</div>
+
+  <label for="cookieUrls">Cookie URLs</label>
+  <textarea id="cookieUrls" placeholder="https://toolkit.co"></textarea>
+  <div class="hint">One URL per line. The extension checks each for the cookie, in order.</div>
+
+  <div class="row">
+    <button id="save">Save</button>
+    <button id="reset" type="button">Restore defaults</button>
+    <span id="status" class="status"></span>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

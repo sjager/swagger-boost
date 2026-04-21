@@ -1,9 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Swagger JWT Auto-Auth",
+  "name": "Swagger Boost",
   "version": "0.1.0",
   "description": "Adds a button to Swagger UI pages that fetches your toolkit.co JWT cookie and authorizes the page.",
-  "permissions": ["cookies", "scripting"],
+  "permissions": ["cookies", "scripting", "storage"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "host_permissions": [
     "https://*.toolkit.co/*",
     "https://toolkit.co/*",
