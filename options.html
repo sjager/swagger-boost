@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <title>Swagger Boost — Options</title>
   <style>
-    body { font: 14px system-ui; padding: 16px; min-width: 360px; }
+    body { font: 14px system-ui; padding: 16px; max-width: 560px; }
     h1 { font-size: 16px; margin: 0 0 12px; }
-    label { display: block; margin: 12px 0 4px; font-weight: 600; }
+    label { display: block; margin: 14px 0 4px; font-weight: 600; }
     input, textarea { width: 100%; padding: 6px 8px; font: 13px monospace; box-sizing: border-box; }
-    textarea { height: 72px; resize: vertical; }
+    textarea { height: 84px; resize: vertical; }
     .hint { color: #666; font-size: 12px; margin-top: 2px; }
-    .row { display: flex; gap: 8px; align-items: center; margin-top: 14px; }
+    .row { display: flex; gap: 8px; align-items: center; margin-top: 16px; }
     button { padding: 6px 14px; cursor: pointer; }
-    .status { font-size: 12px; color: #2e7d32; }
+    .status { font-size: 12px; }
+    code { background: #f3f3f3; padding: 1px 4px; border-radius: 3px; }
   </style>
 </head>
 <body>
@@ -23,8 +24,12 @@
   <div class="hint">Name of the JWT cookie to read (e.g., <code>jwt</code>).</div>
 
   <label for="cookieUrls">Cookie URLs</label>
-  <textarea id="cookieUrls" placeholder="https://toolkit.co"></textarea>
-  <div class="hint">One URL per line. The extension checks each for the cookie, in order.</div>
+  <textarea id="cookieUrls" placeholder="https://auth.example.com"></textarea>
+  <div class="hint">One URL per line — the origins the extension reads the cookie from.</div>
+
+  <label for="swaggerMatches">Swagger page match patterns</label>
+  <textarea id="swaggerMatches" placeholder="https://*.example.com/swagger/*"></textarea>
+  <div class="hint">One match pattern per line. The button will be injected on pages matching these. Saving prompts for site access.</div>
 
   <div class="row">
     <button id="save">Save</button>

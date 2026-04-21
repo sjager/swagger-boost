@@ -1,29 +1,15 @@
 {
   "manifest_version": 3,
   "name": "Swagger Boost",
-  "version": "0.1.0",
-  "description": "Adds a button to Swagger UI pages that fetches your toolkit.co JWT cookie and authorizes the page.",
+  "version": "0.2.0",
+  "description": "Adds a button to Swagger UI that authorizes using a JWT cookie from a configured domain.",
   "permissions": ["cookies", "scripting", "storage"],
+  "optional_host_permissions": ["https://*/*"],
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
   },
-  "host_permissions": [
-    "https://*.toolkit.co/*",
-    "https://toolkit.co/*",
-    "https://*.tk.dev/*"
-  ],
   "background": {
     "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://*.toolkit.co/swagger/*",
-        "https://*.tk.dev/swagger/*"
-      ],
-      "js": ["content.js"],
-      "run_at": "document_idle"
-    }
-  ]
+  }
 }
