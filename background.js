@@ -15,10 +15,10 @@ async function findJwt() {
   for (const url of cookieUrls) {
     try {
       const c = await chrome.cookies.get({ url, name: cookieName });
-      if (c?.value) return c.value;
+      if (c?.value) return { jwt: c.value };
     } catch (_) {}
   }
-  return null;
+  return { jwt: null, loginUrl: cookieUrls[0] || null };
 }
 
 async function registerScripts() {
@@ -53,7 +53,7 @@ chrome.permissions.onRemoved.addListener(registerScripts);
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.type === "GET_JWT") {
-    findJwt().then(jwt => sendResponse({ jwt })).catch(err => sendResponse({ error: String(err) }));
+    findJwt().then(sendResponse).catch(err => sendResponse({ error: String(err) }));
     return true;
   }
 });

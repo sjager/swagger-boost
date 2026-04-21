@@ -56,8 +56,9 @@
       try {
         const res = await chrome.runtime.sendMessage({ type: "GET_JWT" });
         if (!res?.jwt) {
-          showToast("No JWT cookie found. Log in at toolkit.co first.", false);
-          window.open("https://toolkit.co", "_blank");
+          const loginUrl = res?.loginUrl;
+          showToast(loginUrl ? `No JWT cookie found. Log in at ${loginUrl} first.` : "No JWT cookie found. Configure Cookie URLs in extension options.", false);
+          if (loginUrl) window.open(loginUrl, "_blank");
           return;
         }
         const ok = authorizeSwagger(res.jwt);
